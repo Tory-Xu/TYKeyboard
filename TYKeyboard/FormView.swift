@@ -39,7 +39,7 @@ class FormView: UIView {
         var needComputeHeightByRatio = false
         var totalRatio: Float = 0
         list.forEach { (row) in
-            residueHeight = residueHeight - row.height
+            residueHeight = residueHeight - row.height - Float(row.contentInsets.top) - Float(row.contentInsets.bottom)
             if row.ratio > 0 {
                 totalRatio = totalRatio + row.ratio
                 needComputeHeightByRatio = true
@@ -56,20 +56,23 @@ class FormView: UIView {
             if row.ratio != 0 {
                 height = CGFloat(residueHeight * row.ratio / totalRatio)
             }
-            let rowView = UIView(frame: CGRect(x: 0, y: lastRowMaxY, width: onContainView.frame.width, height: height))
+            let rowView = UIView(frame: CGRect(x: row.contentInsets.left,
+                                               y: lastRowMaxY + row.contentInsets.top,
+                                               width: onContainView.frame.width - row.contentInsets.left - row.contentInsets.right,
+                                               height: height))
             rowView.backgroundColor = self.randomColor()
             onContainView.addSubview(rowView)
             
-            lastRowMaxY = rowView.frame.maxY
+            lastRowMaxY = rowView.frame.maxY + row.contentInsets.bottom
             
-            
-            let horizontalWidth = Float(onContainView.frame.width)
+            let horizontalWidth = Float(rowView.frame.width)
             var residueWidth = horizontalWidth
             var needComputeWidthByRatio = false
             var totalHorizontalRatio: Float = 0
             row.list.forEach { (element) in
                 residueWidth = residueWidth - element.width
                 if element.ratio > 0 {
+                    residueWidth = residueWidth - Float(element.contentInsets.left) - Float(element.contentInsets.right)
                     totalHorizontalRatio += element.ratio
                     needComputeWidthByRatio = true
                 }
@@ -81,13 +84,15 @@ class FormView: UIView {
 
             var lastColMaxX: CGFloat = 0
             row.list.forEach { (element) in
-
                 var width = CGFloat(element.width)
                 if element.ratio > 0 {
                     width = CGFloat(residueWidth * element.ratio / totalHorizontalRatio)
                 }
-                let frame = CGRect(x: lastColMaxX, y: 0, width: width, height: height)
-                lastColMaxX = frame.maxX
+                let frame = CGRect(x: lastColMaxX + element.contentInsets.left,
+                                   y: element.contentInsets.top,
+                                   width: width,
+                                   height: height - element.contentInsets.top - element.contentInsets.bottom)
+                lastColMaxX = frame.maxX + element.contentInsets.right
                 
                 if let col = element as? Column {
                     let colView = UIView(frame: frame)

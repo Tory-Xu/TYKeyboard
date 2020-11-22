@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
 protocol FormElement {
-    
+    var contentInsets: UIEdgeInsets { get set }
 }
 
 /// 水平对齐排列元素
@@ -37,6 +38,7 @@ class TitleItem: ItemElement {
     var title: String!
     var width: Float = 0
     var ratio: Float = 1
+    var contentInsets: UIEdgeInsets = .zero
     
     private init(title: String, width: Float, ratio: Float) {
         self.title = title
@@ -51,6 +53,11 @@ class TitleItem: ItemElement {
     convenience init(title: String, ratio: Float) {
         self.init(title: title, width: 0, ratio: ratio)
     }
+    
+    func setContentInsets(insets: UIEdgeInsets) -> TitleItem {
+        self.contentInsets = insets
+        return self
+    }
 }
 
 extension TitleItem: CustomStringConvertible {
@@ -63,6 +70,7 @@ extension TitleItem: CustomStringConvertible {
 class Column: HorizontalAlignmentContainer {
     var width: Float = 0
     var ratio: Float = 1
+    var contentInsets: UIEdgeInsets = .zero
     lazy var form: Form = {
         let form = Form()
         return form
@@ -79,6 +87,11 @@ class Column: HorizontalAlignmentContainer {
     private init(width: Float, ratio: Float) {
         self.width = width
         self.ratio = ratio
+    }
+    
+    func setContentInsets(insets: UIEdgeInsets) -> Column {
+        self.contentInsets = insets
+        return self
     }
     
     func addItems(_ handle:(_ form: Form) -> Void) -> Column {
@@ -100,6 +113,7 @@ extension Column: CustomStringConvertible {
 class Row: VerticalAlignmentElement {
     var height: Float = 0
     var ratio: Float = 1
+    var contentInsets: UIEdgeInsets = .zero
     
     /// 列、元素
     lazy var list: [HorizontalAlignmentElement] = {
@@ -118,6 +132,11 @@ class Row: VerticalAlignmentElement {
     
     convenience init(ratio: Float) {
         self.init(height: 0, ratio: ratio)
+    }
+    
+    func setContentInsets(insets: UIEdgeInsets) -> Row {
+        self.contentInsets = insets
+        return self
     }
     
     func append(element: HorizontalAlignmentElement) {
