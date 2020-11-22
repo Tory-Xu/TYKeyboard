@@ -7,8 +7,23 @@
 
 import UIKit
 
+protocol FormViewDelegate {
+    func formView(fromView: FormView, didClickOn view: UIView)
+}
+
 class FormView: UIView {
     var form: Form?
+//    weak var delegate: FormViewDelegate?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.addTapAction()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func reloadForm() {
         self.clearItems()
@@ -119,4 +134,23 @@ class FormView: UIView {
     func randomColor() -> UIColor {
         return UIColor(red: CGFloat(arc4random_uniform(256))/256.0, green: CGFloat(arc4random_uniform(256))/256.0, blue: CGFloat(arc4random_uniform(256))/256.0, alpha: 1)
     }
+    
+    private func addTapAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(tap:)))
+        self.addGestureRecognizer(tap)
+    }
+    
+    @objc private func tapAction(tap: UITapGestureRecognizer) {
+        
+        let point = tap.location(in: self)
+        let touchView = self.subviews.first { (view) -> Bool in
+            view.layer.contains(point)
+        }
+        
+//        if let view = touchView {
+//            delegate?.formView(fromView: self, didClickOn: view)
+//        }
+    }
+    
+    
 }
