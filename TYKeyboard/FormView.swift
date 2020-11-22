@@ -70,9 +70,8 @@ class FormView: UIView {
             var needComputeWidthByRatio = false
             var totalHorizontalRatio: Float = 0
             row.list.forEach { (element) in
-                residueWidth = residueWidth - element.width
+                residueWidth = residueWidth - element.width - Float(element.contentInsets.left) - Float(element.contentInsets.right)
                 if element.ratio > 0 {
-                    residueWidth = residueWidth - Float(element.contentInsets.left) - Float(element.contentInsets.right)
                     totalHorizontalRatio += element.ratio
                     needComputeWidthByRatio = true
                 }

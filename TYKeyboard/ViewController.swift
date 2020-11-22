@@ -25,46 +25,48 @@ class ViewController: UIViewController {
     func createForm() -> Form {
         let form = Form()
   
-//        form >>> Row(ratio: 1)
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "按钮0", width: 160)
-//                +++ TitleItem(title: "按钮0", width: 160)
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "按钮0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-//                +++ TitleItem(title: "按钮0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "按钮0", ratio: 1)
-//                +++ TitleItem(title: "按钮0", ratio: 1)
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-//            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
+        form >>> Row(ratio: 1)
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "按钮0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+                +++ TitleItem(title: "按钮0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+                +++ TitleItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+                +++ TitleItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "按钮0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+                +++ TitleItem(title: "按钮0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "按钮0", ratio: 1)
+                +++ TitleItem(title: "按钮0", ratio: 1)
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
+
+                })
+        
+//        form >>>
+//            Row(height: 100).setContentInsets(insets: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
+//                +++ Column(ratio: 1).addItems({ (form) in
+//                    form >>> Row(ratio: 1)
+//                        >>> Row(ratio: 1)
+//                            +++ TitleItem(title: "按钮-", ratio: 1)
+//                            +++ TitleItem(title: "按钮+", ratio: 1)
+//                        >>> Row(ratio: 1)
+//                            +++ TitleItem(title: "按钮=", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+//                            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
+//
+//                            })
 //
 //                })
-        
-        form >>>
-            Row(height: 100).setContentInsets(insets: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
-                +++ Column(ratio: 1).addItems({ (form) in
-                    form >>> Row(ratio: 1)
-                        >>> Row(ratio: 1)
-                            +++ TitleItem(title: "按钮-", ratio: 1)
-                            +++ TitleItem(title: "按钮+", ratio: 1)
-                        >>> Row(ratio: 1)
-                            +++ TitleItem(title: "按钮=", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-                            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
-
-                            })
-
-                })
-                +++ Column(ratio: 1).addItems({ (form) in
-                    form >>> Row(height: 20)
-                            +++ TitleItem(title: "按钮1", ratio: 1)
-                            +++ TitleItem(title: "按钮2", ratio: 1)
-                            +++ TitleItem(title: "按钮3", ratio: 1)
-                })
-
-            >>> Row(height: 60)
-                +++ TitleItem(title: "按钮1", ratio: 1)
-                +++ Column(ratio: 1)
+//                +++ Column(ratio: 1).addItems({ (form) in
+//                    form >>> Row(height: 20)
+//                            +++ TitleItem(title: "按钮1", ratio: 1)
+//                            +++ TitleItem(title: "按钮2", ratio: 1)
+//                            +++ TitleItem(title: "按钮3", ratio: 1)
+//                })
+//
+//            >>> Row(height: 60)
+//                +++ TitleItem(title: "按钮1", ratio: 1)
+//                +++ Column(ratio: 1)
                 
      
         print("-----------")
