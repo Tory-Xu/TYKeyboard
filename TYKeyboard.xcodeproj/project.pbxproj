@@ -18,6 +18,7 @@
 		9A06286A25693776008952FE /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06286925693776008952FE /* Core.swift */; };
 		9A06286F25693F44008952FE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06286E25693F44008952FE /* Operators.swift */; };
 		9A3C7B9A256954EE00C436DC /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C7B99256954EE00C436DC /* FormView.swift */; };
+		9A51995C256A9B810037B6CA /* FormItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A51995B256A9B810037B6CA /* FormItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		9A06286925693776008952FE /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		9A06286E25693F44008952FE /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
 		9A3C7B99256954EE00C436DC /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+		9A51995B256A9B810037B6CA /* FormItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				9A06283A25693594008952FE /* ViewController.swift */,
 				9A3C7B99256954EE00C436DC /* FormView.swift */,
 				9A06286925693776008952FE /* Core.swift */,
+				9A51995B256A9B810037B6CA /* FormItem.swift */,
 				9A06286E25693F44008952FE /* Operators.swift */,
 				9A06283C25693594008952FE /* Main.storyboard */,
 				9A06283F25693596008952FE /* Assets.xcassets */,
@@ -267,6 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A51995C256A9B810037B6CA /* FormItem.swift in Sources */,
 				9A3C7B9A256954EE00C436DC /* FormView.swift in Sources */,
 				9A06283B25693594008952FE /* ViewController.swift in Sources */,
 				9A06286F25693F44008952FE /* Operators.swift in Sources */,

@@ -32,39 +32,8 @@ protocol VerticalAlignmentElement: FormElement {
 
 protocol ItemElement: HorizontalAlignmentElement {
     var title: String! { get set }
-}
-
-class TitleItem: ItemElement {
-    var title: String!
-    var width: Float = 0
-    var ratio: Float = 1
-    var contentInsets: UIEdgeInsets = .zero
     
-    private init(title: String, width: Float, ratio: Float) {
-        self.title = title
-        self.width = width
-        self.ratio = ratio
-    }
-    
-    convenience init(title: String, width: Float) {
-        self.init(title: title, width: width, ratio: 0)
-    }
-    
-    convenience init(title: String, ratio: Float) {
-        self.init(title: title, width: 0, ratio: ratio)
-    }
-    
-    func setContentInsets(insets: UIEdgeInsets) -> TitleItem {
-        self.contentInsets = insets
-        return self
-    }
-}
-
-extension TitleItem: CustomStringConvertible {
-    var description: String {
-        return "\n\t\t+++ item title: \(String(describing: self.title)), width: \(self.width), ratio: \(self.ratio)"
-    }
-    
+    func createView(frame: CGRect) -> UIView
 }
 
 class Column: HorizontalAlignmentContainer {

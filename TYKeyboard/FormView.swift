@@ -100,23 +100,20 @@ class FormView: UIView {
                     
                     self.createFormAndLayout(form: col.form, onContainView: colView)
                 } else if let item = element as? ItemElement {
-                    let label = UILabel(frame: frame)
-                    label.text = item.title
-                    label.backgroundColor = self.randomColor()
-                    rowView.addSubview(label)
+                    let view = item.createView(frame: frame)
                     
+                    if let viewType = view as? ViewType {
+                        viewType.setTitle(item.title)
+                    }
                     
+                    view.backgroundColor = self.randomColor()
+                    rowView.addSubview(view)
                 } else {
                     fatalError("未处理的类型(\(element)")
                 }
 
             }
         }
-    }
-    
-    func createColumnAndLayout(list: [Row], onContainView: UIView) {
-        
-        
     }
     
     func randomColor() -> UIColor {
