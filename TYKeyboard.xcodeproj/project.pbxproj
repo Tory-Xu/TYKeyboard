@@ -1,0 +1,610 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9A06283725693594008952FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06283625693594008952FE /* AppDelegate.swift */; };
+		9A06283925693594008952FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06283825693594008952FE /* SceneDelegate.swift */; };
+		9A06283B25693594008952FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06283A25693594008952FE /* ViewController.swift */; };
+		9A06283E25693594008952FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A06283C25693594008952FE /* Main.storyboard */; };
+		9A06284025693596008952FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A06283F25693596008952FE /* Assets.xcassets */; };
+		9A06284325693596008952FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A06284125693596008952FE /* LaunchScreen.storyboard */; };
+		9A06284E25693596008952FE /* TYKeyboardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06284D25693596008952FE /* TYKeyboardTests.swift */; };
+		9A06285925693596008952FE /* TYKeyboardUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06285825693596008952FE /* TYKeyboardUITests.swift */; };
+		9A06286A25693776008952FE /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06286925693776008952FE /* Core.swift */; };
+		9A06286F25693F44008952FE /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06286E25693F44008952FE /* Operators.swift */; };
+		9A3C7B9A256954EE00C436DC /* FormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A3C7B99256954EE00C436DC /* FormView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9A06284A25693596008952FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A06282B25693594008952FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A06283225693594008952FE;
+			remoteInfo = TYKeyboard;
+		};
+		9A06285525693596008952FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9A06282B25693594008952FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9A06283225693594008952FE;
+			remoteInfo = TYKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9A06283325693594008952FE /* TYKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A06283625693594008952FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9A06283825693594008952FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9A06283A25693594008952FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A06283D25693594008952FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9A06283F25693596008952FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A06284225693596008952FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A06284425693596008952FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A06284925693596008952FE /* TYKeyboardTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYKeyboardTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A06284D25693596008952FE /* TYKeyboardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYKeyboardTests.swift; sourceTree = "<group>"; };
+		9A06284F25693596008952FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A06285425693596008952FE /* TYKeyboardUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TYKeyboardUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A06285825693596008952FE /* TYKeyboardUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYKeyboardUITests.swift; sourceTree = "<group>"; };
+		9A06285A25693596008952FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A06286925693776008952FE /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
+		9A06286E25693F44008952FE /* Operators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Operators.swift; sourceTree = "<group>"; };
+		9A3C7B99256954EE00C436DC /* FormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9A06283025693594008952FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A06284625693596008952FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A06285125693596008952FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9A06282A25693594008952FE = {
+			isa = PBXGroup;
+			children = (
+				9A06283525693594008952FE /* TYKeyboard */,
+				9A06284C25693596008952FE /* TYKeyboardTests */,
+				9A06285725693596008952FE /* TYKeyboardUITests */,
+				9A06283425693594008952FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9A06283425693594008952FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9A06283325693594008952FE /* TYKeyboard.app */,
+				9A06284925693596008952FE /* TYKeyboardTests.xctest */,
+				9A06285425693596008952FE /* TYKeyboardUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A06283525693594008952FE /* TYKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9A06283625693594008952FE /* AppDelegate.swift */,
+				9A06283825693594008952FE /* SceneDelegate.swift */,
+				9A06283A25693594008952FE /* ViewController.swift */,
+				9A3C7B99256954EE00C436DC /* FormView.swift */,
+				9A06286925693776008952FE /* Core.swift */,
+				9A06286E25693F44008952FE /* Operators.swift */,
+				9A06283C25693594008952FE /* Main.storyboard */,
+				9A06283F25693596008952FE /* Assets.xcassets */,
+				9A06284125693596008952FE /* LaunchScreen.storyboard */,
+				9A06284425693596008952FE /* Info.plist */,
+			);
+			path = TYKeyboard;
+			sourceTree = "<group>";
+		};
+		9A06284C25693596008952FE /* TYKeyboardTests */ = {
+			isa = PBXGroup;
+			children = (
+				9A06284D25693596008952FE /* TYKeyboardTests.swift */,
+				9A06284F25693596008952FE /* Info.plist */,
+			);
+			path = TYKeyboardTests;
+			sourceTree = "<group>";
+		};
+		9A06285725693596008952FE /* TYKeyboardUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9A06285825693596008952FE /* TYKeyboardUITests.swift */,
+				9A06285A25693596008952FE /* Info.plist */,
+			);
+			path = TYKeyboardUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9A06283225693594008952FE /* TYKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A06285D25693596008952FE /* Build configuration list for PBXNativeTarget "TYKeyboard" */;
+			buildPhases = (
+				9A06282F25693594008952FE /* Sources */,
+				9A06283025693594008952FE /* Frameworks */,
+				9A06283125693594008952FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TYKeyboard;
+			productName = TYKeyboard;
+			productReference = 9A06283325693594008952FE /* TYKeyboard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9A06284825693596008952FE /* TYKeyboardTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A06286025693596008952FE /* Build configuration list for PBXNativeTarget "TYKeyboardTests" */;
+			buildPhases = (
+				9A06284525693596008952FE /* Sources */,
+				9A06284625693596008952FE /* Frameworks */,
+				9A06284725693596008952FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A06284B25693596008952FE /* PBXTargetDependency */,
+			);
+			name = TYKeyboardTests;
+			productName = TYKeyboardTests;
+			productReference = 9A06284925693596008952FE /* TYKeyboardTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9A06285325693596008952FE /* TYKeyboardUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9A06286325693596008952FE /* Build configuration list for PBXNativeTarget "TYKeyboardUITests" */;
+			buildPhases = (
+				9A06285025693596008952FE /* Sources */,
+				9A06285125693596008952FE /* Frameworks */,
+				9A06285225693596008952FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9A06285625693596008952FE /* PBXTargetDependency */,
+			);
+			name = TYKeyboardUITests;
+			productName = TYKeyboardUITests;
+			productReference = 9A06285425693596008952FE /* TYKeyboardUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9A06282B25693594008952FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					9A06283225693594008952FE = {
+						CreatedOnToolsVersion = 12.1;
+					};
+					9A06284825693596008952FE = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 9A06283225693594008952FE;
+					};
+					9A06285325693596008952FE = {
+						CreatedOnToolsVersion = 12.1;
+						TestTargetID = 9A06283225693594008952FE;
+					};
+				};
+			};
+			buildConfigurationList = 9A06282E25693594008952FE /* Build configuration list for PBXProject "TYKeyboard" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9A06282A25693594008952FE;
+			productRefGroup = 9A06283425693594008952FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9A06283225693594008952FE /* TYKeyboard */,
+				9A06284825693596008952FE /* TYKeyboardTests */,
+				9A06285325693596008952FE /* TYKeyboardUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9A06283125693594008952FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A06284325693596008952FE /* LaunchScreen.storyboard in Resources */,
+				9A06284025693596008952FE /* Assets.xcassets in Resources */,
+				9A06283E25693594008952FE /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A06284725693596008952FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A06285225693596008952FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9A06282F25693594008952FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A3C7B9A256954EE00C436DC /* FormView.swift in Sources */,
+				9A06283B25693594008952FE /* ViewController.swift in Sources */,
+				9A06286F25693F44008952FE /* Operators.swift in Sources */,
+				9A06283725693594008952FE /* AppDelegate.swift in Sources */,
+				9A06286A25693776008952FE /* Core.swift in Sources */,
+				9A06283925693594008952FE /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A06284525693596008952FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A06284E25693596008952FE /* TYKeyboardTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A06285025693596008952FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9A06285925693596008952FE /* TYKeyboardUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9A06284B25693596008952FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A06283225693594008952FE /* TYKeyboard */;
+			targetProxy = 9A06284A25693596008952FE /* PBXContainerItemProxy */;
+		};
+		9A06285625693596008952FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9A06283225693594008952FE /* TYKeyboard */;
+			targetProxy = 9A06285525693596008952FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9A06283C25693594008952FE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A06283D25693594008952FE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9A06284125693596008952FE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9A06284225693596008952FE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9A06285B25693596008952FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9A06285C25693596008952FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9A06285E25693596008952FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LD8P5X33TJ;
+				INFOPLIST_FILE = TYKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tory.xu.TYKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9A06285F25693596008952FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LD8P5X33TJ;
+				INFOPLIST_FILE = TYKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tory.xu.TYKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9A06286125693596008952FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LD8P5X33TJ;
+				INFOPLIST_FILE = TYKeyboardTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tory.xu.TYKeyboardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TYKeyboard.app/TYKeyboard";
+			};
+			name = Debug;
+		};
+		9A06286225693596008952FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LD8P5X33TJ;
+				INFOPLIST_FILE = TYKeyboardTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tory.xu.TYKeyboardTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TYKeyboard.app/TYKeyboard";
+			};
+			name = Release;
+		};
+		9A06286425693596008952FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LD8P5X33TJ;
+				INFOPLIST_FILE = TYKeyboardUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tory.xu.TYKeyboardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TYKeyboard;
+			};
+			name = Debug;
+		};
+		9A06286525693596008952FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LD8P5X33TJ;
+				INFOPLIST_FILE = TYKeyboardUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tory.xu.TYKeyboardUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = TYKeyboard;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9A06282E25693594008952FE /* Build configuration list for PBXProject "TYKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A06285B25693596008952FE /* Debug */,
+				9A06285C25693596008952FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A06285D25693596008952FE /* Build configuration list for PBXNativeTarget "TYKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A06285E25693596008952FE /* Debug */,
+				9A06285F25693596008952FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A06286025693596008952FE /* Build configuration list for PBXNativeTarget "TYKeyboardTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A06286125693596008952FE /* Debug */,
+				9A06286225693596008952FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9A06286325693596008952FE /* Build configuration list for PBXNativeTarget "TYKeyboardUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9A06286425693596008952FE /* Debug */,
+				9A06286525693596008952FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9A06282B25693594008952FE /* Project object */;
+}
