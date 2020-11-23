@@ -4,6 +4,11 @@
 //
 //  Created by Tory on 2020/11/21.
 //
+/**
+ 
+    1，支持设置并排间距
+    2，
+ */
 
 import UIKit
 
