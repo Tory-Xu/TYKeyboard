@@ -13,8 +13,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let formView = FormView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 400))
-        formView.backgroundColor = .blue
+        let formView = FormView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 300))
+        formView.backgroundColor = .black
         formView.delegate = self
         self.view.addSubview(formView)
         
@@ -25,25 +25,65 @@ class ViewController: UIViewController {
     
     func createForm() -> Form {
         let form = Form()
-  
-//        form >>> Row(ratio: 1)
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "title0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-//                +++ TitleItem(title: "title0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-//                +++ ActionItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-//                +++ ActionItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "title0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-//                +++ TitleItem(title: "title0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "title0", ratio: 1)
-//                +++ TitleItem(title: "title0", ratio: 1)
-//            >>> Row(ratio: 1)
-//                +++ TitleItem(title: "title0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-//            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
-//
-//                })
-        
+        self.keyboard(form: form)
+
+        print("-----------")
+        print(form)
+        return form
+    }
+    
+    func keyboard(form: Form) {
+        form >>> Row(height: 300)
+                +++ Column(ratio: 1).addItems({ (form) in
+                    self.numberForm(form: form)
+                })
+            +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
+                    form >>> Row(ratio: 1)
+                            +++ TitleItem(title: "+", ratio: 1)
+                        >>> Row(ratio: 1)
+                            +++ TitleItem(title: "-", ratio: 1)
+                })
+    }
+    
+    func numberForm(form: Form) {
+        form >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
+                +++ TitleItem(title: "1", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: "2", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: "3", ratio: 1)
+            >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
+                +++ TitleItem(title: "4", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: "5", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: "6", ratio: 1)
+            >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
+                +++ TitleItem(title: "7", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: "8", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: "9", ratio: 1)
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "0", ratio: 2).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ TitleItem(title: ".", ratio: 1)
+    }
+
+    func test0(form: Form) {
+        form >>> Row(ratio: 1)
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "title0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+                +++ TitleItem(title: "title0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
+                +++ ActionItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
+                +++ ActionItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "title0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+                +++ TitleItem(title: "title0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "title0", ratio: 1)
+                +++ TitleItem(title: "title0", ratio: 1)
+            >>> Row(ratio: 1)
+                +++ TitleItem(title: "title0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
+            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
+
+                })
+    }
+    
+    func test1(form: Form) {
         form >>>
             Row(height: 100).setContentInsets(insets: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
                 +++ Column(ratio: 1).addItems({ (form) in
@@ -66,13 +106,7 @@ class ViewController: UIViewController {
                 +++ TitleItem(title: "按钮1", ratio: 1)
                 +++ TitleItem(title: "按钮1", ratio: 1)
                 +++ Column(ratio: 1)
-     
-        
-        print("-----------")
-        print(form)
-        return form
     }
-
 
 }
 
