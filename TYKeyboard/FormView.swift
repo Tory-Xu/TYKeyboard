@@ -15,6 +15,10 @@ class FormView: UIView {
     var form: Form?
     weak var delegate: FormViewDelegate?
     
+    /// 根据 Form 的内容自动适配高度，此时 form 中 ratio 以 ratioUnit 为 1 个
+    private var autoFitHeight: Bool = false
+    private var ratioUnit: Float = 0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -23,6 +27,11 @@ class FormView: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func autoFitHeight(_ autoFit: Bool, ratioUnit: Float) {
+        self.autoFitHeight = autoFit
+        self.ratioUnit = ratioUnit
     }
     
     func reloadForm() {
@@ -34,50 +43,59 @@ class FormView: UIView {
         self.createItemsAndLayout()
     }
     
-    func clearItems() {
+    override func layoutSubviews() {
+        superview?.layoutSubviews()
+    }
+
+    
+    private func clearItems() {
         self.subviews.forEach { (view) in
             view.removeFromSuperview()
         }
     }
     
-    override func layoutSubviews() {
-        superview?.layoutSubviews()
+    private func createItemsAndLayout() {
+        self.createFormAndLayout(form: self.form!, isMainFormRowLayout: true, onRect: self.bounds)
     }
     
-    func createItemsAndLayout() {
-        self.createFormAndLayout(form: self.form!, onRect: self.bounds)
+    private func createFormAndLayout(form: Form, isMainFormRowLayout: Bool, onRect: CGRect) {
+        self .createRowsAndLayout(list: form.list, isMainFormRowLayout: isMainFormRowLayout, onRect: onRect)
     }
     
-    func createFormAndLayout(form: Form, onRect: CGRect) {
-        self .createRowsAndLayout(list: form.list, onRect: onRect)
-    }
-    
-    func addFrame(_ frame: CGRect, onRect: CGRect) -> CGRect {
+    private func addFrame(_ frame: CGRect, onRect: CGRect) -> CGRect {
         return CGRect(x: frame.minX + onRect.minX, y: frame.minY + onRect.minY, width: frame.width, height: frame.height)
     }
     
-    func createRowsAndLayout(list: [Row], onRect: CGRect) {
+    private func createRowsAndLayout(list: [Row], isMainFormRowLayout: Bool, onRect: CGRect) {
         let verticalHeight = Float(onRect.height)
         var residueHeight = verticalHeight
         var needComputeHeightByRatio = false
         var totalRatio: Float = 0
-        list.forEach { (row) in
-            residueHeight = residueHeight - row.height - Float(row.contentInsets.top) - Float(row.contentInsets.bottom)
-            if row.ratio > 0 {
-                totalRatio = totalRatio + row.ratio
-                needComputeHeightByRatio = true
+        
+        if isMainFormRowLayout && self.autoFitHeight {
+        } else {
+            list.forEach { (row) in
+                residueHeight = residueHeight - row.height - Float(row.contentInsets.top) - Float(row.contentInsets.bottom)
+                if row.ratio > 0 {
+                    totalRatio = totalRatio + row.ratio
+                    needComputeHeightByRatio = true
+                }
             }
-        }
-        if residueHeight <= 0, needComputeHeightByRatio {
-            residueHeight = 0
-            fatalError("剩余高度不够显示")
+            if residueHeight <= 0, needComputeHeightByRatio {
+                residueHeight = 0
+                fatalError("剩余高度不够显示")
+            }
         }
         
         var lastRowMaxY: CGFloat = 0
         list.forEach { (row) in
             var height = CGFloat(row.height)
             if row.ratio != 0 {
-                height = CGFloat(residueHeight * row.ratio / totalRatio)
+                if isMainFormRowLayout && self.autoFitHeight {
+                    height = CGFloat(self.ratioUnit)
+                } else {
+                    height = CGFloat(residueHeight * row.ratio / totalRatio)
+                }
             }
             
             var rowFrame = CGRect(x: row.contentInsets.left,
@@ -125,7 +143,7 @@ class FormView: UIView {
 //                    let colView = UIView(frame: itemFrame)
 //                    colView.backgroundColor = self.randomColor()
 //                    self.addSubview(colView)
-                    self.createFormAndLayout(form: col.form, onRect: itemFrame)
+                    self.createFormAndLayout(form: col.form, isMainFormRowLayout: false, onRect: itemFrame)
                 } else if let item = element as? ItemElement {
                     let view = item.createView(frame: itemFrame)
                     
@@ -141,9 +159,14 @@ class FormView: UIView {
 
             }
         }
+        
+        if isMainFormRowLayout && self.autoFitHeight {
+            let frame = self.frame
+            self.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width, height: lastRowMaxY)
+        }
     }
     
-    func randomColor() -> UIColor {
+    private func randomColor() -> UIColor {
         return UIColor(red: CGFloat(arc4random_uniform(256))/256.0, green: CGFloat(arc4random_uniform(256))/256.0, blue: CGFloat(arc4random_uniform(256))/256.0, alpha: 1)
     }
     

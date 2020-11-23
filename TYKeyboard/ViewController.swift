@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         let formView = FormView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 300))
         formView.backgroundColor = .black
         formView.delegate = self
+        formView.autoFitHeight(true, ratioUnit: 200)
         self.view.addSubview(formView)
         
         formView.form = self.createForm()
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
     }
     
     func keyboard(form: Form) {
-        form >>> Row(height: 300)
+        form >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
                     self.numberForm(form: form)
                 })
