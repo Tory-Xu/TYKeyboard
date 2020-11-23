@@ -40,16 +40,24 @@ class FormView: UIView {
         }
     }
     
+    override func layoutSubviews() {
+        superview?.layoutSubviews()
+    }
+    
     func createItemsAndLayout() {
-        self.createFormAndLayout(form: self.form!, onContainView: self)
+        self.createFormAndLayout(form: self.form!, onRect: self.bounds)
     }
     
-    func createFormAndLayout(form: Form, onContainView: UIView) {
-        self .createRowsAndLayout(list: form.list, onContainView: onContainView)
+    func createFormAndLayout(form: Form, onRect: CGRect) {
+        self .createRowsAndLayout(list: form.list, onRect: onRect)
     }
     
-    func createRowsAndLayout(list: [Row], onContainView: UIView) {
-        let verticalHeight = Float(onContainView.frame.height)
+    func addFrame(_ frame: CGRect, onRect: CGRect) -> CGRect {
+        return CGRect(x: frame.minX + onRect.minX, y: frame.minY + onRect.minY, width: frame.width, height: frame.height)
+    }
+    
+    func createRowsAndLayout(list: [Row], onRect: CGRect) {
+        let verticalHeight = Float(onRect.height)
         var residueHeight = verticalHeight
         var needComputeHeightByRatio = false
         var totalRatio: Float = 0
@@ -71,16 +79,20 @@ class FormView: UIView {
             if row.ratio != 0 {
                 height = CGFloat(residueHeight * row.ratio / totalRatio)
             }
-            let rowView = UIView(frame: CGRect(x: row.contentInsets.left,
-                                               y: lastRowMaxY + row.contentInsets.top,
-                                               width: onContainView.frame.width - row.contentInsets.left - row.contentInsets.right,
-                                               height: height))
-            rowView.backgroundColor = self.randomColor()
-            onContainView.addSubview(rowView)
             
-            lastRowMaxY = rowView.frame.maxY + row.contentInsets.bottom
+            var rowFrame = CGRect(x: row.contentInsets.left,
+                                       y: lastRowMaxY + row.contentInsets.top,
+                                       width: onRect.width - row.contentInsets.left - row.contentInsets.right,
+                                       height: height)
+            lastRowMaxY = rowFrame.maxY + row.contentInsets.bottom
+            rowFrame = self.addFrame(rowFrame,
+                         onRect: onRect)
             
-            let horizontalWidth = Float(rowView.frame.width)
+//            let rowView = UIView(frame: rowFrame)
+//            rowView.backgroundColor = self.randomColor()
+//            self.addSubview(rowView)
+            
+            let horizontalWidth = Float(rowFrame.width)
             var residueWidth = horizontalWidth
             var needComputeWidthByRatio = false
             var totalHorizontalRatio: Float = 0
@@ -102,27 +114,27 @@ class FormView: UIView {
                 if element.ratio > 0 {
                     width = CGFloat(residueWidth * element.ratio / totalHorizontalRatio)
                 }
-                let frame = CGRect(x: lastColMaxX + element.contentInsets.left,
-                                   y: element.contentInsets.top,
-                                   width: width,
-                                   height: height - element.contentInsets.top - element.contentInsets.bottom)
-                lastColMaxX = frame.maxX + element.contentInsets.right
+                var itemFrame = CGRect(x: lastColMaxX + element.contentInsets.left,
+                                       y: element.contentInsets.top,
+                                       width: width,
+                                       height: height - element.contentInsets.top - element.contentInsets.bottom)
+                lastColMaxX = itemFrame.maxX + element.contentInsets.right
+                itemFrame = self.addFrame(itemFrame, onRect: rowFrame)
                 
                 if let col = element as? Column {
-                    let colView = UIView(frame: frame)
-                    colView.backgroundColor = self.randomColor()
-                    rowView.addSubview(colView)
-                    
-                    self.createFormAndLayout(form: col.form, onContainView: colView)
+//                    let colView = UIView(frame: itemFrame)
+//                    colView.backgroundColor = self.randomColor()
+//                    self.addSubview(colView)
+                    self.createFormAndLayout(form: col.form, onRect: itemFrame)
                 } else if let item = element as? ItemElement {
-                    let view = item.createView(frame: frame)
+                    let view = item.createView(frame: itemFrame)
                     
                     if let viewType = view as? ViewType {
                         viewType.setTitle(item.title)
                     }
                     
                     view.backgroundColor = self.randomColor()
-                    rowView.addSubview(view)
+                    self.addSubview(view)
                 } else {
                     fatalError("未处理的类型(\(element)")
                 }
