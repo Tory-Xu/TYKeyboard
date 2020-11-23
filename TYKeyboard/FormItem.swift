@@ -95,3 +95,33 @@ class ButtonItem: UIButton, ViewType {
         self.setTitle(title, for: .normal)
     }
 }
+
+class CustomItem: Item<CustomView> {
+    
+    var configCustomViewHandle:((_ customView: CustomView) -> Void)?
+    
+    override func createView(frame: CGRect) -> UIView {
+        let customView = super.createView(frame: frame) as! CustomView
+        if let handle = self.configCustomViewHandle {
+            handle(customView)
+        }
+        return customView
+    }
+}
+
+class CustomView: UIView, ViewType {
+    var item: ItemElement?
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setTitle(_ title: String) {
+        
+    }
+}
+

@@ -107,7 +107,6 @@ class ViewController: UIViewController {
                 +++ TitleItem(title: "按钮1", ratio: 1)
                 +++ Column(ratio: 1)
     }
-
 }
 
 extension ViewController: FormViewDelegate {
