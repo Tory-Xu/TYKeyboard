@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         
         let formView = FormView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 400))
         formView.backgroundColor = .blue
+        formView.delegate = self
         self.view.addSubview(formView)
         
         formView.form = self.createForm()
@@ -66,6 +67,7 @@ class ViewController: UIViewController {
                 +++ TitleItem(title: "按钮1", ratio: 1)
                 +++ Column(ratio: 1)
      
+        
         print("-----------")
         print(form)
         return form
@@ -74,3 +76,8 @@ class ViewController: UIViewController {
 
 }
 
+extension ViewController: FormViewDelegate {
+    func formView(fromView: FormView, didClickOn view: ViewType) {
+        print("did click view(\(view)), item: \(String(describing: view.item))")
+    }
+}

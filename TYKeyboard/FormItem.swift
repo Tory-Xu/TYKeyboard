@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol BaseViewType: UIView {
-    
+    var item: ItemElement? { get set }
     func setTitle(_ title: String)
 }
 
@@ -43,7 +43,15 @@ class Item<View: ViewType> : ItemElement {
     }
     
     func createView(frame: CGRect) -> UIView {
-        return View(frame: frame)
+        let view = View(frame: frame)
+        view.item = self
+        return view
+    }
+}
+
+extension Item: CustomStringConvertible {
+    var description: String {
+        return "Item, title: \(String(describing: self.title))"
     }
     
 }
@@ -52,10 +60,10 @@ class TitleItem: Item<LabelItem> {
 }
 
 class LabelItem: UILabel, ViewType {
+    var item: ItemElement?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         self.textAlignment = .center
     }
     
@@ -73,6 +81,7 @@ class ActionItem: Item<ButtonItem> {
 }
 
 class ButtonItem: UIButton, ViewType {
+    var item: ItemElement?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
