@@ -98,7 +98,7 @@ class ButtonItem: UIButton, ViewType {
 
 class CustomItem: Item<CustomView> {
     
-    var configCustomViewHandle:((_ customView: CustomView) -> Void)?
+    private var configCustomViewHandle:((_ customView: CustomView) -> Void)?
     
     override func createView(frame: CGRect) -> UIView {
         let customView = super.createView(frame: frame) as! CustomView
@@ -106,6 +106,11 @@ class CustomItem: Item<CustomView> {
             handle(customView)
         }
         return customView
+    }
+    
+    func setConfigHandle(_ handle:@escaping (_ customView: CustomView) -> Void) -> CustomItem {
+        self.configCustomViewHandle = handle
+        return self
     }
 }
 

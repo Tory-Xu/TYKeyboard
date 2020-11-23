@@ -27,20 +27,32 @@ class ViewController: UIViewController {
     func createForm() -> Form {
         let form = Form()
         self.keyboard(form: form)
-
         print("-----------")
         print(form)
         return form
     }
     
     func keyboard(form: Form) {
-        form >>> Row(ratio: 1)
+        
+        let button = UIButton(type: .custom)
+        button.setTitle("收起", for: .normal)
+        button.addTarget(self, action: #selector(self.didClickButton), for: .touchUpInside)
+
+        form >>> Row(height: 44).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
+                +++ TitleItem(title: "对手价", ratio: 1)
+                +++ TitleItem(title: "市价价", ratio: 1)
+                +++ TitleItem(title: "触发价价", ratio: 1)
+                +++ CustomItem(title: "~", width: 44).setConfigHandle({ (customView) in
+                    button.frame = customView.bounds
+                    customView.addSubview(button)
+                })
+            >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
                     self.numberForm(form: form)
                 })
             +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
                     form >>> Row(ratio: 1)
-                            +++ TitleItem(title: "+", ratio: 1)
+                        +++ TitleItem(title: "+", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
                         >>> Row(ratio: 1)
                             +++ TitleItem(title: "-", ratio: 1)
                 })
@@ -62,6 +74,10 @@ class ViewController: UIViewController {
             >>> Row(ratio: 1)
                 +++ TitleItem(title: "0", ratio: 2).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
                 +++ TitleItem(title: ".", ratio: 1)
+    }
+    
+    @objc func didClickButton() {
+        print("点击了按钮")
     }
 
     func test0(form: Form) {
