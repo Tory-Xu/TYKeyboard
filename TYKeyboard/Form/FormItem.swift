@@ -161,15 +161,25 @@ class ImageViewItem: UIImageView, ImageType {
 // MARK: - custom item
 
 class CustomItem: Item<CustomView> {
-    
+    private var customView: UIView?
     private var configCustomViewHandle:((_ customView: CustomView) -> Void)?
     
     override func createView(frame: CGRect) -> UIView {
+        if let customView = self.customView {
+            customView.frame = frame
+            return customView
+        }
+        
         let customView = super.createView(frame: frame) as! CustomView
         if let handle = self.configCustomViewHandle {
             handle(customView)
         }
         return customView
+    }
+    
+    func setCustomView(_ view: UIView) -> CustomItem {
+        self.customView = view
+        return self
     }
     
     func setConfigHandle(_ handle:@escaping (_ customView: CustomView) -> Void) -> CustomItem {

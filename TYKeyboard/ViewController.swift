@@ -13,6 +13,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        self.view.backgroundColor = UIColor.black
+        
         let textField = UITextField(frame: CGRect(x: (self.view.frame.width - 200) * 0.5,
                                                   y: 100,
                                                   width: 200,
@@ -53,7 +55,15 @@ class ViewController: UIViewController {
     }
     
     func keyboardForm(form: Form) {
-        form >>> Row(height: 44).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "标题"
+        titleLabel.textAlignment = .center
+        titleLabel.backgroundColor = UIColor.red.withAlphaComponent(0.3)
+        
+        form >>> Row(height: 44).setContentInsets(insets: UIEdgeInsets(top: -44, left: 0, bottom: 0, right: 0))
+                +++ CustomItem(ratio: 1).setCustomView(titleLabel)
+            >>> Row(height: 44).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
                 +++ KeyboardItem(title: "市价", valueType: .custom(value: "市价"), ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
                 +++ KeyboardItem(title: "对手价", valueType: .custom(value: "对手价"), ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
                 +++ KeyboardCommonActionItem(image: UIImage(named: "close"), actionType: .dismiss, width: 60)
