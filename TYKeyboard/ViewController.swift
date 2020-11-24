@@ -13,7 +13,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let textField = UITextField(frame: CGRect(x: 0, y: 100, width: 200, height: 44))
+        let textField = UITextField(frame: CGRect(x: (self.view.frame.width - 200) * 0.5,
+                                                  y: 100,
+                                                  width: 200,
+                                                  height: 44))
         textField.backgroundColor = UIColor.gray
         self.view.addSubview(textField)
         

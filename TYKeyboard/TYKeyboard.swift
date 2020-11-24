@@ -8,13 +8,15 @@
 import UIKit
 
 extension UIResponder {
-    static var currentFirstResponder: AnyObject?
-    @objc private class func ty_currentFirstResponder() -> AnyObject {
-        UIApplication.shared.sendAction(#selector(ty_currentFirstResponder), to: nil, from: nil, for: nil) as AnyObject
+    private static weak var currentFirstResponder: UIResponder?
+    @objc class func ty_currentFirstResponder() -> AnyObject? {
+        UIResponder.currentFirstResponder = nil
+        UIApplication.shared.sendAction(#selector(ty_findFirstResonder(sender:)), to: nil, from: nil, for: nil)
+        return UIResponder.currentFirstResponder
     }
     
-    @objc private func ty_findFirstResonder(sender: AnyObject) -> Void {
-        UIResponder.currentFirstResponder = sender
+    @objc private func ty_findFirstResonder(sender: AnyObject) {
+        UIResponder.currentFirstResponder = self
     }
 }
 
@@ -22,9 +24,13 @@ class TYKeyboard: UIInputView {
 
     weak var delegate: FormViewDelegate?
     
-    var keyInput: AnyObject? {
+    var keyInput: UITextInput? {
         get {
-            return UIResponder.currentFirstResponder
+            return UIResponder.ty_currentFirstResponder() as? UITextInput
+//            if let input = UIResponder.ty_currentFirstResponder() as? UITextInput {
+//                keyInput = input
+//            }
+//            return keyInput
         }
     }
     
@@ -47,10 +53,14 @@ class TYKeyboard: UIInputView {
     @objc private func tapAction(tap: UITapGestureRecognizer) {
         let point = tap.location(in: self)
         let touchView = self.subviews.first { (view) -> Bool in
-            return view.frame.contains(point)
+            return view.frame.contains(point) && view is ViewType
         }
 
         if let view = touchView as? ViewType {
+            
+            if let keyInput = self.keyInput, let title = view.item?.title {
+                keyInput.insertText(title)
+            }
             delegate?.formView(fromView: self, didClickOn: view)
         }
     }
