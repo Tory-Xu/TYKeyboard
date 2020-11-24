@@ -7,18 +7,12 @@
 
 import UIKit
 
-protocol FormViewDelegate: NSObjectProtocol {
-    func formView(fromView: FormView, didClickOn view: ViewType)
-}
 
 class FormView: UIView {
     var form: Form?
-    weak var delegate: FormViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
-        self.addTapAction()
     }
     
     required init?(coder: NSCoder) {
@@ -46,23 +40,7 @@ class FormView: UIView {
         }
     }
     
-    private func addTapAction() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAction(tap:)))
-        self.addGestureRecognizer(tap)
-        self.isUserInteractionEnabled = true
-    }
-    
-    @objc private func tapAction(tap: UITapGestureRecognizer) {
-        
-        let point = tap.location(in: self)
-        let touchView = self.subviews.first { (view) -> Bool in
-            return view.frame.contains(point)
-        }
-        
-        if let view = touchView as? ViewType {
-            delegate?.formView(fromView: self, didClickOn: view)
-        }
-    }
+
     
     
 }

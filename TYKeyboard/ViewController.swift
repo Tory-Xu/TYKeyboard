@@ -134,7 +134,7 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: FormViewDelegate {
-    func formView(fromView: FormView, didClickOn view: ViewType) {
+    func formView(fromView: UIView, didClickOn view: ViewType) {
         print("did click view(\(view)), item: \(String(describing: view.item))")
     }
 }

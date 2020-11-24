@@ -148,6 +148,8 @@ class Form {
         self.autoFitHeight = autoFit
         self.ratioUnit = ratioUnit
     }
+    
+//    MARK - 表格布局
 
     func layoutContainView(_ containView: UIView) {
         self.containView = containView
@@ -282,4 +284,43 @@ extension Form: CustomStringConvertible {
     var description: String {
         return "form list:\(self.list)\n\n"
     }
+}
+
+protocol FormViewDelegate: NSObjectProtocol {
+    func formView(fromView: UIView, didClickOn view: ViewType)
+}
+
+protocol FormResponder: NSObjectProtocol {
+    var delegate: FormViewDelegate? { get set }
+}
+
+extension UIView: FormResponder {
+    weak var delegate: FormViewDelegate? {
+        set {
+            oldValue = newValue
+            self.ty_addTapAction()
+        }
+        
+        get {
+            return delegate
+        }
+    }
+    
+    private func ty_addTapAction() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ty_tapAction(tap:)))
+        self.addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc private func ty_tapAction(tap: UITapGestureRecognizer) {
+        let point = tap.location(in: self)
+        let touchView = self.subviews.first { (view) -> Bool in
+            return view.frame.contains(point)
+        }
+        
+        if let view = touchView as? ViewType {
+            delegate?.formView(fromView: self, didClickOn: view)
+        }
+    }
+    
 }
