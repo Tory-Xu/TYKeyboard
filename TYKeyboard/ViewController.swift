@@ -54,86 +54,41 @@ class ViewController: UIViewController {
     }
     
     func keyboardForm(form: Form) {
-        form >>> Row(height: 44)
-                +++ TitleItem(title: "市价", ratio: 1)
-                +++ TitleItem(title: "对手价", ratio: 1)
-                +++ CommonActionImageItem(image: UIImage(named: "close")!, actionType: .dismiss, width: 60)
+        form >>> Row(height: 44).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
+                +++ KeyboardItem(title: "市价", valueType: .custom(value: "市价"), ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardItem(title: "对手价", valueType: .custom(value: "对手价"), ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardCommonActionItem(image: UIImage(named: "close"), actionType: .dismiss, width: 60)
             >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
                     self.numberForm(form: form)
                 })
                 +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
                         form >>> Row(ratio: 1)
-                                +++ CommonActionItem(title: "+", actionType: .plus, ratio: 1)
+                                +++ KeyboardCommonActionItem(title: "+", actionType: .plus, ratio: 1)
                             >>> Row(ratio: 1)
-                                +++ CommonActionItem(title: "-", actionType: .subtract, ratio: 1)
+                                +++ KeyboardCommonActionItem(title: "-", actionType: .subtract, ratio: 1)
                             >>> Row(ratio: 1)
-                                +++ CommonActionItem(title: "清除", actionType: .clear, ratio: 1)
+                                +++ KeyboardCommonActionItem(title: "清除", actionType: .clear, ratio: 1)
                     })
     }
     
     func numberForm(form: Form) {
         form >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
-                +++ InputItem(title: "1", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "2", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "3", ratio: 1)
+                +++ KeyboardInputItem(title: "1", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "2", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "3", ratio: 1)
             >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
-                +++ InputItem(title: "4", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "5", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "6", ratio: 1)
+                +++ KeyboardInputItem(title: "4", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "5", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "6", ratio: 1)
             >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
-                +++ InputItem(title: "7", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "8", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "9", ratio: 1)
+                +++ KeyboardInputItem(title: "7", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "8", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "9", ratio: 1)
             >>> Row(ratio: 1)
-                +++ InputItem(title: ".", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: "0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ CommonActionItem(title: "删除", actionType: .delete, ratio: 1)
-    }
-
-    func test0(form: Form) {
-        form >>> Row(ratio: 1)
-            >>> Row(ratio: 1)
-                +++ TitleItem(title: "title0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-                +++ TitleItem(title: "title0", width: 80).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-                +++ ActionItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-                +++ ActionItem(title: "按钮0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-            >>> Row(ratio: 1)
-                +++ TitleItem(title: "title0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-                +++ TitleItem(title: "title0", width: 155.5).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3))
-            >>> Row(ratio: 1)
-                +++ TitleItem(title: "title0", ratio: 1)
-                +++ TitleItem(title: "title0", ratio: 1)
-            >>> Row(ratio: 1)
-                +++ TitleItem(title: "title0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-            +++ Column(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 3, left: 0, bottom: 3, right: 3)).addItems({ (form) in
-
-                })
-    }
-    
-    func test1(form: Form) {
-        form >>>
-            Row(height: 100).setContentInsets(insets: UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2))
-                +++ Column(ratio: 1).addItems({ (form) in
-                    form >>> Row(ratio: 1)
-                        >>> Row(ratio: 1)
-                            +++ TitleItem(title: "按钮-", ratio: 1)
-                            +++ TitleItem(title: "按钮+", ratio: 1)
-                        >>> Row(ratio: 1)
-                            +++ TitleItem(title: "按钮=", ratio: 1)
-//                        .setContentInsets(insets: UIEdgeInsets(top: 3, left: 3, bottom: 3, right: 3))
-                })
-                +++ Column(ratio: 1).addItems({ (form) in
-                    form >>> Row(height: 100)
-                            +++ TitleItem(title: "按钮a", ratio: 1)
-                            +++ TitleItem(title: "按钮b", ratio: 1)
-                            +++ TitleItem(title: "按钮c", ratio: 1)
-                })
-
-            >>> Row(height: 60)
-                +++ TitleItem(title: "按钮1", ratio: 1)
-                +++ TitleItem(title: "按钮1", ratio: 1)
-                +++ Column(ratio: 1)
+                +++ KeyboardInputItem(title: ".", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardInputItem(title: "0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ KeyboardCommonActionItem(title: "删除", actionType: .delete, ratio: 1)
     }
 }
 

@@ -256,13 +256,14 @@ class Form {
                     
                     if let titleItem = item as? TitleItem, let viewType = view as? TitleType {
                         viewType.setTitle(titleItem.title)
-                    } else if let actionItem = item as? ActionItem, let viewType = view as? TitleType {
-                        viewType.setTitle(actionItem.title)
+                    } else if let actionItem = item as? ActionItem, let button = view as? ButtonItem {
+                        button.setTitle(actionItem.title, for: .normal)
+                        button.setImage(actionItem.image, for: .normal)
                     } else if let imageItem = item as? ImageItem, let viewType = view as? ImageType {
                         viewType.setImage(imageItem.image)
                     }
                     
-                    view.backgroundColor = self.randomColor()
+//                    view.backgroundColor = self.randomColor()
                     self.containView!.addSubview(view)
                 } else {
                     fatalError("未处理的类型(\(element)")

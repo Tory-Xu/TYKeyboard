@@ -97,19 +97,21 @@ class LabelItem: UILabel, TitleType {
 // MARK: - button item
 
 class ActionItem: Item<ButtonItem> {
-    var title: String!
+    var title: String?
+    var image: UIImage?
     
-    init(title: String, width: Float, ratio: Float) {
+    init(title: String?, image: UIImage?, width: Float, ratio: Float) {
         super.init(width: width, ratio: ratio)
         self.title = title
+        self.image = image
     }
 
-    convenience init(title: String, width: Float) {
-        self.init(title: title, width: width, ratio: 0)
+    convenience init(title: String?, image: UIImage?, width: Float) {
+        self.init(title: title, image: image, width: width, ratio: 0)
     }
     
-    convenience init(title: String, ratio: Float) {
-        self.init(title: title, width: 0, ratio: ratio)
+    convenience init(title: String?, image: UIImage?, ratio: Float) {
+        self.init(title: title, image: image, width: 0, ratio: ratio)
     }
 }
 

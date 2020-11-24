@@ -28,101 +28,77 @@ enum KeyboardValueType {
     case custom(value: Any)
 }
 
-protocol KeyboardItemProtocol {
-    var valueType: KeyboardValueType { get set }
-}
-
-/// 键盘输入内容按钮
-class InputItem: TitleItem, KeyboardItemProtocol {
+class KeyboardItem: ActionItem {
     var valueType: KeyboardValueType
     
-    override init(title: String, width: Float, ratio: Float) {
-        self.valueType = KeyboardValueType.inputValue(value: title)
-        super.init(title: title, width: width, ratio: ratio)
-    }
-    
-//    convenience init(title: String, width: Float) {
-//        self.init(title: title, width: width, ratio: 0)
-//    }
-//
-//    convenience init(title: String, ratio: Float) {
-//        self.init(title: title, width: 0, ratio: ratio)
-//    }
-}
-
-class CustomActionItem: TitleItem, KeyboardItemProtocol {
-    var valueType: KeyboardValueType
-    
-    private init(title: String,
+    init(title: String? = nil,
+                 image: UIImage? = nil,
                  valueType: KeyboardValueType,
                  width: Float,
                  ratio: Float) {
         self.valueType = valueType
-        super.init(title: title, width: width, ratio: ratio)
+        super.init(title: title, image: image, width: width, ratio: ratio)
     }
     
-    convenience init(title: String, valueType: KeyboardValueType, width: Float) {
-        self.init(title: title, valueType: valueType, width: width, ratio: 0)
+    convenience init(title: String? = nil,
+                     image: UIImage? = nil,
+                     valueType: KeyboardValueType,
+                     width: Float) {
+        self.init(title: title, image: image, valueType: valueType, width: width, ratio: 0)
     }
     
-    convenience init(title: String, valueType: KeyboardValueType,ratio: Float) {
-        self.init(title: title, valueType: valueType, width: 0, ratio: ratio)
+    convenience init(title: String? = nil,
+                     image: UIImage? = nil,
+                     valueType: KeyboardValueType,
+                     ratio: Float) {
+        self.init(title: title, image: image, valueType: valueType, width: 0, ratio: ratio)
+    }
+    
+    override func configeView(view: ButtonItem) {
+        view.backgroundColor = .white
+        view.setTitleColor(.red, for: .normal)
+    }
+}
+
+/// 键盘输入内容按钮
+class KeyboardInputItem: KeyboardItem {
+    init(title: String, width: Float, ratio: Float) {
+        super.init(title: title,
+                   image: nil,
+                   valueType: KeyboardValueType.inputValue(value: title),
+                   width: width,
+                   ratio: ratio)
+    }
+    
+    convenience init(title: String, width: Float) {
+        self.init(title: title, width: width, ratio: 0)
+    }
+
+    convenience init(title: String, ratio: Float) {
+        self.init(title: title, width: 0, ratio: ratio)
     }
 }
 
 /// 常用事件按钮
-class CommonActionItem: ActionItem, KeyboardItemProtocol {
-    var valueType: KeyboardValueType
-    
-    private init(title: String,
+class KeyboardCommonActionItem: KeyboardItem {
+    private init(title: String? = nil,
+                 image: UIImage? = nil,
                  actionType: CommonActionType,
                  width: Float,
                  ratio: Float) {
-        self.valueType = KeyboardValueType.commonAction(actionType: actionType)
-        super.init(title: title, width: width, ratio: ratio)
+        super.init(title: title,
+                   image: image,
+                   valueType: KeyboardValueType.commonAction(actionType: actionType),
+                   width: width,
+                   ratio: ratio)
     }
     
-    convenience init(title: String, actionType: CommonActionType, width: Float) {
-        self.init(title: title, actionType: actionType, width: width, ratio: 0)
+    convenience init(title: String? = nil, image: UIImage? = nil, actionType: CommonActionType, width: Float) {
+        self.init(title: title, image: image, actionType: actionType, width: width, ratio: 0)
     }
     
-    convenience init(title: String, actionType: CommonActionType,ratio: Float) {
-        self.init(title: title, actionType: actionType, width: 0, ratio: ratio)
-    }
-}
-
-/// 常用事件按钮
-class CustomActionImageItem: ImageItem, KeyboardItemProtocol {
-    var valueType: KeyboardValueType
-    
-    init(image: UIImage, valueType: KeyboardValueType, width: Float, ratio: Float) {
-        self.valueType = valueType
-        super.init(image: image, width: width, ratio: ratio)
-    }
-    
-    convenience init(image: UIImage, valueType: KeyboardValueType, width: Float) {
-        self.init(image: image, valueType: valueType, width: width, ratio: 0)
-    }
-    
-    convenience init(image: UIImage, valueType: KeyboardValueType,ratio: Float) {
-        self.init(image: image, valueType: valueType, width: 0, ratio: ratio)
-    }
-}
-
-class CommonActionImageItem: ImageItem, KeyboardItemProtocol {
-    var valueType: KeyboardValueType
-    
-    init(image: UIImage, actionType: CommonActionType, width: Float, ratio: Float) {
-        self.valueType = KeyboardValueType.commonAction(actionType: actionType)
-        super.init(image: image, width: width, ratio: ratio)
-    }
-    
-    convenience init(image: UIImage, actionType: CommonActionType, width: Float) {
-        self.init(image: image, actionType: actionType, width: width, ratio: 0)
-    }
-    
-    convenience init(image: UIImage, actionType: CommonActionType,ratio: Float) {
-        self.init(image: image, actionType: actionType, width: 0, ratio: ratio)
+    convenience init(title: String? = nil, image: UIImage? = nil, actionType: CommonActionType,ratio: Float) {
+        self.init(title: title, image: image, actionType: actionType, width: 0, ratio: ratio)
     }
 }
 

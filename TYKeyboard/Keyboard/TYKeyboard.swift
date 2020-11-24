@@ -31,10 +31,6 @@ class TYKeyboard: UIInputView {
     var keyInput: UITextInput? {
         get {
             return UIResponder.ty_currentFirstResponder() as? UITextInput
-//            if let input = UIResponder.ty_currentFirstResponder() as? UITextInput {
-//                keyInput = input
-//            }
-//            return keyInput
         }
     }
     
@@ -60,32 +56,35 @@ class TYKeyboard: UIInputView {
             return view.frame.contains(point) && view is ViewType
         }
 
-        if let view = touchView as? ViewType {
-            
-            if let keyboardItem = view.item as? KeyboardItemProtocol {
-                let valueType = keyboardItem.valueType
-                self.delegate?.keyboard(keyboard: self, didClickItem: valueType)
-                
-                switch valueType {
-                case let .inputValue(value):
-                    self.keyInput?.insertText(value)
-                case let .commonAction(type):
-                    switch type {
-                    case .clear:
-                        while self.keyInput?.hasText ?? false {
-                            self.keyInput?.deleteBackward()
-                        }
-                    case .delete:
-                        self.keyInput?.deleteBackward()
-                    case .dismiss:
-                        self.dismiss()
-                    default:
-                        break
-                    }
-                default: break
+        self.clickOnView(touchView: touchView)
+    }
+    
+    func clickOnView(touchView: UIView?) {
+        guard let view = touchView as? ViewType,
+              let keyboardItem = view.item as? KeyboardItem else {
+            return
+        }
+        
+        let valueType = keyboardItem.valueType
+        self.delegate?.keyboard(keyboard: self, didClickItem: valueType)
+        
+        switch valueType {
+        case let .inputValue(value):
+            self.keyInput?.insertText(value)
+        case let .commonAction(type):
+            switch type {
+            case .clear:
+                while self.keyInput?.hasText ?? false {
+                    self.keyInput?.deleteBackward()
                 }
-                
+            case .delete:
+                self.keyInput?.deleteBackward()
+            case .dismiss:
+                self.dismiss()
+            default:
+                break
             }
+        default: break
         }
     }
     
