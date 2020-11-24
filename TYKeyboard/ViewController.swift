@@ -18,20 +18,13 @@ class ViewController: UIViewController {
                                                   width: 200,
                                                   height: 44))
         textField.backgroundColor = UIColor.gray
-        self.view.addSubview(textField)
-        
         textField.inputView = self.createKeyboard()
+        self.view.addSubview(textField)
+        textField.becomeFirstResponder()
     }
     
     
     func createKeyboard() -> TYKeyboard {
-//        let formView = FormView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300))
-//        formView.backgroundColor = .black
-//        formView.delegate = self
-//
-//        formView.form = self.createForm()
-//        formView.reloadForm()
-
         let keyboard = TYKeyboard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))
         keyboard.delegate = self
         let form = self.createForm()
@@ -63,7 +56,7 @@ class ViewController: UIViewController {
     func keyboardForm(form: Form) {
         form >>> Row(height: 44)
                 +++ TitleItem(title: "市价", ratio: 1)
-                +++ TitleItem(title: "市价", ratio: 1)
+                +++ TitleItem(title: "对手价", ratio: 1)
                 +++ ImageItem(image: UIImage(named: "close")!, width: 60)
             >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
@@ -79,20 +72,20 @@ class ViewController: UIViewController {
     
     func numberForm(form: Form) {
         form >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
-                +++ TitleItem(title: "1", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: "2", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: "3", ratio: 1)
+                +++ InputItem(title: "1", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "2", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "3", ratio: 1)
             >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
-                +++ TitleItem(title: "4", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: "5", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: "6", ratio: 1)
+                +++ InputItem(title: "4", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "5", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "6", ratio: 1)
             >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
-                +++ TitleItem(title: "7", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: "8", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: "9", ratio: 1)
+                +++ InputItem(title: "7", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "8", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "9", ratio: 1)
             >>> Row(ratio: 1)
-                +++ TitleItem(title: "0", ratio: 2).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ TitleItem(title: ".", ratio: 1)
+                +++ InputItem(title: "0", ratio: 2).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: ".", ratio: 1)
     }
 
     func test0(form: Form) {
@@ -144,5 +137,12 @@ class ViewController: UIViewController {
 extension ViewController: FormViewDelegate {
     func formView(fromView: UIView, didClickOn view: ViewType) {
         print("did click view(\(view)), item: \(String(describing: view.item))")
+    }
+}
+
+
+extension ViewController: TYKeyboardDelegate {
+    func keyboard(keyboard: TYKeyboard, didClickItem valueType: KeyboardValueType) {
+        print("did click keyboard, valueType: \(valueType)")
     }
 }

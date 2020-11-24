@@ -20,9 +20,13 @@ extension UIResponder {
     }
 }
 
+protocol TYKeyboardDelegate: NSObjectProtocol {
+    func keyboard(keyboard: TYKeyboard, didClickItem valueType: KeyboardValueType)
+}
+
 class TYKeyboard: UIInputView {
 
-    weak var delegate: FormViewDelegate?
+    weak var delegate: TYKeyboardDelegate?
     
     var keyInput: UITextInput? {
         get {
@@ -57,10 +61,39 @@ class TYKeyboard: UIInputView {
         }
 
         if let view = touchView as? ViewType {
-            if let keyInput = self.keyInput, let titleItem = view.item as? TitleItem {
-                keyInput.insertText(titleItem.title)
+            
+            if let keyboardItem = view.item as? KeyboardItemProtocol {
+                let valueType = keyboardItem.valueType
+                self.delegate?.keyboard(keyboard: self, didClickItem: valueType)
+                
+                switch valueType {
+                case let .inputValue(value):
+                    self.keyInput?.insertText(value)
+                case let .commonAction(type):
+                    switch type {
+                    case .clear:
+                        while self.keyInput?.hasText ?? false {
+                            self.keyInput?.deleteBackward()
+                        }
+                    case .delete:
+                        self.keyInput?.deleteBackward()
+                    case .dismiss:
+                        self.dismiss()
+                    default:
+                        break
+                    }
+                default: break
+                }
+                
             }
-            delegate?.formView(fromView: self, didClickOn: view)
         }
+    }
+    
+    func dismiss() {
+        guard let responder = self.keyInput as? UIResponder else {
+            return
+        }
+        
+        responder.resignFirstResponder()
     }
 }

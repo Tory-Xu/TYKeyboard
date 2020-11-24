@@ -58,7 +58,7 @@ class Item<View: ViewType> : ItemElement {
 class TitleItem: Item<LabelItem> {
     var title: String!
     
-    private init(title: String, width: Float, ratio: Float) {
+    init(title: String, width: Float, ratio: Float) {
         super.init(width: width, ratio: ratio)
         self.title = title
     }
@@ -115,7 +115,7 @@ class ButtonItem: UIButton, TitleType {
 class ImageItem: Item<ImageViewItem> {
     var image: UIImage!
     
-    private init(image: UIImage, width: Float, ratio: Float) {
+    init(image: UIImage, width: Float, ratio: Float) {
         super.init(width: width, ratio: ratio)
         self.image = image
     }
