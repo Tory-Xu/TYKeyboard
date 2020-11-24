@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     func keyboardFormDemo() {
         let formView = FormView(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 300))
         formView.backgroundColor = .black
-        formView.delegate = self
+//        formView.delegate = self
         self.view.addSubview(formView)
 
         formView.form = self.createForm()

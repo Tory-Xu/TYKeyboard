@@ -294,33 +294,34 @@ protocol FormResponder: NSObjectProtocol {
     var delegate: FormViewDelegate? { get set }
 }
 
-extension UIView: FormResponder {
-    weak var delegate: FormViewDelegate? {
-        set {
-            oldValue = newValue
-            self.ty_addTapAction()
-        }
-        
-        get {
-            return delegate
-        }
-    }
+//extension UIView: FormResponder {
+//    weak var delegate: FormViewDelegate?
+//    {
+//        set {
+//            oldValue = newValue
+//            self.ty_addTapAction()
+//        }
+//
+//        get {
+//            return delegate
+//        }
+//    }
     
-    private func ty_addTapAction() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(ty_tapAction(tap:)))
-        self.addGestureRecognizer(tap)
-        self.isUserInteractionEnabled = true
-    }
+//    private func ty_addTapAction() {
+//        let tap = UITapGestureRecognizer(target: self, action: #selector(ty_tapAction(tap:)))
+//        self.addGestureRecognizer(tap)
+//        self.isUserInteractionEnabled = true
+//    }
+//
+//    @objc private func ty_tapAction(tap: UITapGestureRecognizer) {
+//        let point = tap.location(in: self)
+//        let touchView = self.subviews.first { (view) -> Bool in
+//            return view.frame.contains(point)
+//        }
+//
+//        if let view = touchView as? ViewType {
+//            delegate?.formView(fromView: self, didClickOn: view)
+//        }
+//    }
     
-    @objc private func ty_tapAction(tap: UITapGestureRecognizer) {
-        let point = tap.location(in: self)
-        let touchView = self.subviews.first { (view) -> Bool in
-            return view.frame.contains(point)
-        }
-        
-        if let view = touchView as? ViewType {
-            delegate?.formView(fromView: self, didClickOn: view)
-        }
-    }
-    
-}
+//}
