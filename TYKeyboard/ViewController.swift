@@ -22,16 +22,17 @@ class ViewController: UIViewController {
     
     
     func createKeyboard() -> TYKeyboard {
-        let formView = FormView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300))
-        formView.backgroundColor = .black
-        formView.delegate = self
-        formView.autoFitHeight(true, ratioUnit: 200)
-        
-        formView.form = self.createForm()
-        formView.reloadForm()
+//        let formView = FormView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300))
+//        formView.backgroundColor = .black
+//        formView.delegate = self
+//
+//        formView.form = self.createForm()
+//        formView.reloadForm()
 
-        let keyboard = TYKeyboard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: formView.frame.height))
-        keyboard.addSubview(formView)
+        let keyboard = TYKeyboard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))
+        let form = self.createForm()
+        form.layoutContainView(keyboard)
+        
         return keyboard
     }
     
@@ -39,7 +40,6 @@ class ViewController: UIViewController {
         let formView = FormView(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 300))
         formView.backgroundColor = .black
         formView.delegate = self
-        formView.autoFitHeight(true, ratioUnit: 200)
         self.view.addSubview(formView)
 
         formView.form = self.createForm()
@@ -48,6 +48,7 @@ class ViewController: UIViewController {
     
     func createForm() -> Form {
         let form = Form()
+        form.autoFitHeight(true, ratioUnit: 200)
         self.keyboardForm(form: form)
 
         print("-----------")
