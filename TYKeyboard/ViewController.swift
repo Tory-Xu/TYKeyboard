@@ -57,16 +57,18 @@ class ViewController: UIViewController {
         form >>> Row(height: 44)
                 +++ TitleItem(title: "市价", ratio: 1)
                 +++ TitleItem(title: "对手价", ratio: 1)
-                +++ ImageItem(image: UIImage(named: "close")!, width: 60)
+                +++ CommonActionImageItem(image: UIImage(named: "close")!, actionType: .dismiss, width: 60)
             >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
                     self.numberForm(form: form)
                 })
                 +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
                         form >>> Row(ratio: 1)
-                                +++ TitleItem(title: "+", ratio: 1)
+                                +++ CommonActionItem(title: "+", actionType: .plus, ratio: 1)
                             >>> Row(ratio: 1)
-                                +++ TitleItem(title: "-", ratio: 1)
+                                +++ CommonActionItem(title: "-", actionType: .subtract, ratio: 1)
+                            >>> Row(ratio: 1)
+                                +++ CommonActionItem(title: "清除", actionType: .clear, ratio: 1)
                     })
     }
     
@@ -84,8 +86,9 @@ class ViewController: UIViewController {
                 +++ InputItem(title: "8", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
                 +++ InputItem(title: "9", ratio: 1)
             >>> Row(ratio: 1)
-                +++ InputItem(title: "0", ratio: 2).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
-                +++ InputItem(title: ".", ratio: 1)
+                +++ InputItem(title: ".", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ InputItem(title: "0", ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 1))
+                +++ CommonActionItem(title: "删除", actionType: .delete, ratio: 1)
     }
 
     func test0(form: Form) {

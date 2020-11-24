@@ -50,6 +50,26 @@ class InputItem: TitleItem, KeyboardItemProtocol {
 //    }
 }
 
+class CustomActionItem: TitleItem, KeyboardItemProtocol {
+    var valueType: KeyboardValueType
+    
+    private init(title: String,
+                 valueType: KeyboardValueType,
+                 width: Float,
+                 ratio: Float) {
+        self.valueType = valueType
+        super.init(title: title, width: width, ratio: ratio)
+    }
+    
+    convenience init(title: String, valueType: KeyboardValueType, width: Float) {
+        self.init(title: title, valueType: valueType, width: width, ratio: 0)
+    }
+    
+    convenience init(title: String, valueType: KeyboardValueType,ratio: Float) {
+        self.init(title: title, valueType: valueType, width: 0, ratio: ratio)
+    }
+}
+
 /// 常用事件按钮
 class CommonActionItem: TitleItem, KeyboardItemProtocol {
     var valueType: KeyboardValueType
@@ -72,6 +92,23 @@ class CommonActionItem: TitleItem, KeyboardItemProtocol {
 }
 
 /// 常用事件按钮
+class CustomActionImageItem: ImageItem, KeyboardItemProtocol {
+    var valueType: KeyboardValueType
+    
+    init(image: UIImage, valueType: KeyboardValueType, width: Float, ratio: Float) {
+        self.valueType = valueType
+        super.init(image: image, width: width, ratio: ratio)
+    }
+    
+    convenience init(image: UIImage, valueType: KeyboardValueType, width: Float) {
+        self.init(image: image, valueType: valueType, width: width, ratio: 0)
+    }
+    
+    convenience init(image: UIImage, valueType: KeyboardValueType,ratio: Float) {
+        self.init(image: image, valueType: valueType, width: 0, ratio: ratio)
+    }
+}
+
 class CommonActionImageItem: ImageItem, KeyboardItemProtocol {
     var valueType: KeyboardValueType
     
