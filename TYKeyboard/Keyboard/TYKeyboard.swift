@@ -27,6 +27,7 @@ protocol TYKeyboardDelegate: NSObjectProtocol {
 class TYKeyboard: UIInputView {
 
     weak var delegate: TYKeyboardDelegate?
+    var form: Form?
     
     var keyInput: UITextInput? {
         get {
@@ -42,6 +43,12 @@ class TYKeyboard: UIInputView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func layoutByForm(_ form: Form) {
+        form.delegate = self
+        form.layoutContainView(self)
+        self.form = form
     }
     
     private func addTapAction() {
@@ -94,5 +101,11 @@ class TYKeyboard: UIInputView {
         }
         
         responder.resignFirstResponder()
+    }
+}
+
+extension TYKeyboard: FormDelegate {
+    func form(form: Form, didClickOn button: ButtonItem) {
+        self.clickOnView(touchView: button)
     }
 }

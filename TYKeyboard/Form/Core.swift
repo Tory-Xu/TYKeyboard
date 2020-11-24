@@ -117,7 +117,13 @@ extension Row: CustomStringConvertible {
     }
 }
 
+protocol FormDelegate: NSObjectProtocol {
+    func form(form: Form, didClickOn button: ButtonItem)
+}
+
 class Form {
+    weak var delegate: FormDelegate?
+    
     lazy var list: [Row] = {
         let list = [Row]()
         return list
@@ -259,6 +265,7 @@ class Form {
                     } else if let actionItem = item as? ActionItem, let button = view as? ButtonItem {
                         button.setTitle(actionItem.title, for: .normal)
                         button.setImage(actionItem.image, for: .normal)
+                        button.addTarget(self, action: #selector(didClickOnButton(button:)), for: .touchUpInside)
                     } else if let imageItem = item as? ImageItem, let viewType = view as? ImageType {
                         viewType.setImage(imageItem.image)
                     }
@@ -278,6 +285,10 @@ class Form {
         }
     }
     
+    @objc private func didClickOnButton(button: ButtonItem) {
+        self.delegate?.form(form: self, didClickOn: button)
+    }
+    
     private func randomColor() -> UIColor {
         return UIColor(red: CGFloat(arc4random_uniform(256))/256.0, green: CGFloat(arc4random_uniform(256))/256.0, blue: CGFloat(arc4random_uniform(256))/256.0, alpha: 1)
     }
@@ -291,8 +302,4 @@ extension Form: CustomStringConvertible {
 
 protocol FormViewDelegate: NSObjectProtocol {
     func formView(fromView: UIView, didClickOn view: ViewType)
-}
-
-protocol FormResponder: NSObjectProtocol {
-    var delegate: FormViewDelegate? { get set }
 }
