@@ -71,7 +71,7 @@ class CustomActionItem: TitleItem, KeyboardItemProtocol {
 }
 
 /// 常用事件按钮
-class CommonActionItem: TitleItem, KeyboardItemProtocol {
+class CommonActionItem: ActionItem, KeyboardItemProtocol {
     var valueType: KeyboardValueType
     
     private init(title: String,

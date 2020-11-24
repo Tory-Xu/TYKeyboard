@@ -256,6 +256,8 @@ class Form {
                     
                     if let titleItem = item as? TitleItem, let viewType = view as? TitleType {
                         viewType.setTitle(titleItem.title)
+                    } else if let actionItem = item as? ActionItem, let viewType = view as? TitleType {
+                        viewType.setTitle(actionItem.title)
                     } else if let imageItem = item as? ImageItem, let viewType = view as? ImageType {
                         viewType.setImage(imageItem.image)
                     }

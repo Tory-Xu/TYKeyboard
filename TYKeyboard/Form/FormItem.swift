@@ -48,8 +48,13 @@ class Item<View: ViewType> : ItemElement {
     
     func createView(frame: CGRect) -> UIView {
         let view = View(frame: frame)
+        self.configeView(view: view)
         view.item = self
         return view
+    }
+    
+    func configeView(view: View) {
+
     }
 }
 
@@ -92,6 +97,20 @@ class LabelItem: UILabel, TitleType {
 // MARK: - button item
 
 class ActionItem: Item<ButtonItem> {
+    var title: String!
+    
+    init(title: String, width: Float, ratio: Float) {
+        super.init(width: width, ratio: ratio)
+        self.title = title
+    }
+
+    convenience init(title: String, width: Float) {
+        self.init(title: title, width: width, ratio: 0)
+    }
+    
+    convenience init(title: String, ratio: Float) {
+        self.init(title: title, width: 0, ratio: ratio)
+    }
 }
 
 class ButtonItem: UIButton, TitleType {
