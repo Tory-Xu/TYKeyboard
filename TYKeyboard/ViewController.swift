@@ -62,9 +62,9 @@ class ViewController: UIViewController {
                     self.numberForm(form: form)
                 })
                 +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
-                        form >>> Row(ratio: 1)
+                    form >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
                                 +++ KeyboardCommonActionItem(title: "+", actionType: .plus, ratio: 1)
-                            >>> Row(ratio: 1)
+                            >>> Row(ratio: 1).setContentInsets(insets: UIEdgeInsets(top: 0, left: 0, bottom: 1, right: 0))
                                 +++ KeyboardCommonActionItem(title: "-", actionType: .subtract, ratio: 1)
                             >>> Row(ratio: 1)
                                 +++ KeyboardCommonActionItem(title: "清除", actionType: .clear, ratio: 1)
