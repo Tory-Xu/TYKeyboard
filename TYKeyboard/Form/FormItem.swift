@@ -37,7 +37,7 @@ class Item<View: ViewType> : ItemElement {
         self.init(width: width, ratio: 0)
     }
     
-    convenience init(title: String, ratio: Float) {
+    convenience init(ratio: Float) {
         self.init(width: 0, ratio: ratio)
     }
     
