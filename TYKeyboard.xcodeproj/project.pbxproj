@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		83400FAB256C9BF400081115 /* TYKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83400FAA256C9BF400081115 /* TYKeyboard.swift */; };
 		9A06283725693594008952FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06283625693594008952FE /* AppDelegate.swift */; };
 		9A06283925693594008952FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06283825693594008952FE /* SceneDelegate.swift */; };
 		9A06283B25693594008952FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06283A25693594008952FE /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		83400FAA256C9BF400081115 /* TYKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYKeyboard.swift; sourceTree = "<group>"; };
 		9A06283325693594008952FE /* TYKeyboard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TYKeyboard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A06283625693594008952FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A06283825693594008952FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				9A06286925693776008952FE /* Core.swift */,
 				9A51995B256A9B810037B6CA /* FormItem.swift */,
 				9A06286E25693F44008952FE /* Operators.swift */,
+				83400FAA256C9BF400081115 /* TYKeyboard.swift */,
 				9A06283C25693594008952FE /* Main.storyboard */,
 				9A06283F25693596008952FE /* Assets.xcassets */,
 				9A06284125693596008952FE /* LaunchScreen.storyboard */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A51995C256A9B810037B6CA /* FormItem.swift in Sources */,
+				83400FAB256C9BF400081115 /* TYKeyboard.swift in Sources */,
 				9A3C7B9A256954EE00C436DC /* FormView.swift in Sources */,
 				9A06283B25693594008952FE /* ViewController.swift in Sources */,
 				9A06286F25693F44008952FE /* Operators.swift in Sources */,

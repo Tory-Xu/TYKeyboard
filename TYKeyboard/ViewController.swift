@@ -13,27 +13,49 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        let formView = FormView(frame: CGRect(x: 0, y: 100, width: self.view.frame.width, height: 300))
+        let textField = UITextField(frame: CGRect(x: 0, y: 100, width: 200, height: 44))
+        textField.backgroundColor = UIColor.gray
+        self.view.addSubview(textField)
+        
+        textField.inputView = self.createKeyboard()
+    }
+    
+    
+    func createKeyboard() -> TYKeyboard {
+        let formView = FormView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 300))
+        formView.backgroundColor = .black
+        formView.delegate = self
+        formView.autoFitHeight(true, ratioUnit: 200)
+        
+        formView.form = self.createForm()
+        formView.reloadForm()
+
+        let keyboard = TYKeyboard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: formView.frame.height))
+        keyboard.addSubview(formView)
+        return keyboard
+    }
+    
+    func keyboardFormDemo() {
+        let formView = FormView(frame: CGRect(x: 0, y: 300, width: self.view.frame.width, height: 300))
         formView.backgroundColor = .black
         formView.delegate = self
         formView.autoFitHeight(true, ratioUnit: 200)
         self.view.addSubview(formView)
-        
+
         formView.form = self.createForm()
         formView.reloadForm()
     }
     
-    
     func createForm() -> Form {
         let form = Form()
-        self.keyboard(form: form)
+        self.keyboardForm(form: form)
 
         print("-----------")
         print(form)
         return form
     }
     
-    func keyboard(form: Form) {
+    func keyboardForm(form: Form) {
         form >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
                     self.numberForm(form: form)
