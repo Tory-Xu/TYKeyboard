@@ -31,8 +31,6 @@ protocol VerticalAlignmentElement: FormElement {
 }
 
 protocol ItemElement: HorizontalAlignmentElement {
-    var title: String! { get set }
-    
     func createView(frame: CGRect) -> UIView
 }
 
@@ -256,8 +254,10 @@ class Form {
                 } else if let item = element as? ItemElement {
                     let view = item.createView(frame: itemFrame)
                     
-                    if let viewType = view as? ViewType {
-                        viewType.setTitle(item.title)
+                    if let titleItem = item as? TitleItem, let viewType = view as? TitleType {
+                        viewType.setTitle(titleItem.title)
+                    } else if let imageItem = item as? ImageItem, let viewType = view as? ImageType {
+                        viewType.setImage(imageItem.image)
                     }
                     
                     view.backgroundColor = self.randomColor()

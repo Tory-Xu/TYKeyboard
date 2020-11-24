@@ -61,16 +61,20 @@ class ViewController: UIViewController {
     }
     
     func keyboardForm(form: Form) {
-        form >>> Row(ratio: 1)
+        form >>> Row(height: 44)
+                +++ TitleItem(title: "市价", ratio: 1)
+                +++ TitleItem(title: "市价", ratio: 1)
+                +++ ImageItem(image: UIImage(named: "close")!, width: 60)
+            >>> Row(ratio: 1)
                 +++ Column(ratio: 1).addItems({ (form) in
                     self.numberForm(form: form)
                 })
-            +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
-                    form >>> Row(ratio: 1)
-                            +++ TitleItem(title: "+", ratio: 1)
-                        >>> Row(ratio: 1)
-                            +++ TitleItem(title: "-", ratio: 1)
-                })
+                +++ Column(width: 80).setContentInsets(insets: UIEdgeInsets(top: 0, left: 1, bottom: 0, right: 0)).addItems({ (form) in
+                        form >>> Row(ratio: 1)
+                                +++ TitleItem(title: "+", ratio: 1)
+                            >>> Row(ratio: 1)
+                                +++ TitleItem(title: "-", ratio: 1)
+                    })
     }
     
     func numberForm(form: Form) {

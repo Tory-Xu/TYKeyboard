@@ -57,9 +57,8 @@ class TYKeyboard: UIInputView {
         }
 
         if let view = touchView as? ViewType {
-            
-            if let keyInput = self.keyInput, let title = view.item?.title {
-                keyInput.insertText(title)
+            if let keyInput = self.keyInput, let titleItem = view.item as? TitleItem {
+                keyInput.insertText(titleItem.title)
             }
             delegate?.formView(fromView: self, didClickOn: view)
         }

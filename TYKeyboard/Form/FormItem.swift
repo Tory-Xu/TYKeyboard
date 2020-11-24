@@ -10,31 +10,35 @@ import UIKit
 
 protocol BaseViewType: UIView {
     var item: ItemElement? { get set }
-    func setTitle(_ title: String)
 }
 
 protocol ViewType: BaseViewType {
-    
+}
+
+protocol TitleType: ViewType {
+    func setTitle(_ title: String)
+}
+
+protocol ImageType: ViewType {
+    func setImage(_ image: UIImage)
 }
 
 class Item<View: ViewType> : ItemElement {
-    var title: String!
     var width: Float = 0
     var ratio: Float = 1
     var contentInsets: UIEdgeInsets = .zero
     
-    private init(title: String, width: Float, ratio: Float) {
-        self.title = title
+    init(width: Float, ratio: Float) {
         self.width = width
         self.ratio = ratio
     }
     
-    convenience init(title: String, width: Float) {
-        self.init(title: title, width: width, ratio: 0)
+    convenience init(width: Float) {
+        self.init(width: width, ratio: 0)
     }
     
     convenience init(title: String, ratio: Float) {
-        self.init(title: title, width: 0, ratio: ratio)
+        self.init(width: 0, ratio: ratio)
     }
     
     func setContentInsets(insets: UIEdgeInsets) -> Item {
@@ -49,17 +53,26 @@ class Item<View: ViewType> : ItemElement {
     }
 }
 
-extension Item: CustomStringConvertible {
-    var description: String {
-        return "Item, title: \(String(describing: self.title))"
-    }
-    
-}
+// MARK: - label item
 
 class TitleItem: Item<LabelItem> {
+    var title: String!
+    
+    private init(title: String, width: Float, ratio: Float) {
+        super.init(width: width, ratio: ratio)
+        self.title = title
+    }
+
+    convenience init(title: String, width: Float) {
+        self.init(title: title, width: width, ratio: 0)
+    }
+    
+    convenience init(title: String, ratio: Float) {
+        self.init(title: title, width: 0, ratio: ratio)
+    }
 }
 
-class LabelItem: UILabel, ViewType {
+class LabelItem: UILabel, TitleType {
     var item: ItemElement?
     
     override init(frame: CGRect) {
@@ -76,11 +89,12 @@ class LabelItem: UILabel, ViewType {
     }
 }
 
+// MARK: - button item
 
 class ActionItem: Item<ButtonItem> {
 }
 
-class ButtonItem: UIButton, ViewType {
+class ButtonItem: UIButton, TitleType {
     var item: ItemElement?
     
     override init(frame: CGRect) {
@@ -95,6 +109,35 @@ class ButtonItem: UIButton, ViewType {
         self.setTitle(title, for: .normal)
     }
 }
+
+// MARK: - image item
+
+class ImageItem: Item<ImageViewItem> {
+    var image: UIImage!
+    
+    private init(image: UIImage, width: Float, ratio: Float) {
+        super.init(width: width, ratio: ratio)
+        self.image = image
+    }
+
+    convenience init(image: UIImage, width: Float) {
+        self.init(image: image, width: width, ratio: 0)
+    }
+    
+    convenience init(image: UIImage, ratio: Float) {
+        self.init(image: image, width: 0, ratio: ratio)
+    }
+}
+
+class ImageViewItem: UIImageView, ImageType {
+    var item: ItemElement?
+    
+    func setImage(_ image: UIImage) {
+        self.image = image
+    }
+}
+
+// MARK: - custom item
 
 class CustomItem: Item<CustomView> {
     
