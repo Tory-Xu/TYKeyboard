@@ -30,6 +30,7 @@ class ViewController: UIViewController {
 //        formView.reloadForm()
 
         let keyboard = TYKeyboard(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: 200))
+        keyboard.delegate = self
         let form = self.createForm()
         form.layoutContainView(keyboard)
         
